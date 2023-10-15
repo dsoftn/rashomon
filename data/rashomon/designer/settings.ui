@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>360</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 0, 77);</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>2</x>
+     <y>2</y>
+     <width>556</width>
+     <height>356</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(52, 52, 52);
+color: rgb(255, 255, 0);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="QTabWidget" name="tab_settings">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>540</width>
+      <height>250</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabBar::tab {background-color: rgb(52, 52, 52);}
+QTabBar::tab:selected {background-color: rgb(0, 84, 0);}
+QTabBar::tab:hover {background-color: rgb(127, 127, 127);}</string>
+    </property>
+    <property name="currentIndex">
+     <number>3</number>
+    </property>
+    <widget class="QWidget" name="general">
+     <attribute name="title">
+      <string>General</string>
+     </attribute>
+     <widget class="QCheckBox" name="chk_reload_source">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Reload the source when you open the project.</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>60</y>
+        <width>281</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 255, 127);</string>
+      </property>
+      <property name="text">
+       <string>Source will be reloaded if the source is from a file or url
+Clipboard source cannot be reloaded.</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_apply_general">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>180</y>
+        <width>81</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:disabled { color: rgb(130, 130, 130);}
+QPushButton:hover {background-color: qlineargradient(spread:pad, x1:0, y1:0.00568182, x2:0.98, y2:0.982955, stop:0 rgb(38, 19, 255), stop:1 rgb(150, 207, 207));}
+
+</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="txt_result">
+     <attribute name="title">
+      <string>Results</string>
+     </attribute>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Font name:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Font size:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmb_font_name_result">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>251</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 255, 255);
+background-color: rgb(0, 0, 66);</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmb_font_size_result">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>30</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 255, 255);
+background-color: rgb(0, 0, 66);</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_bg_color_result">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>30</y>
+        <width>111</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Background color</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_sample_result">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>515</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Example text</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_apply_result">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>180</y>
+        <width>81</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:disabled { color: rgb(130, 130, 130);}
+QPushButton:hover {background-color: qlineargradient(spread:pad, x1:0, y1:0.00568182, x2:0.98, y2:0.982955, stop:0 rgb(38, 19, 255), stop:1 rgb(150, 207, 207));}
+
+</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_color_sample_result">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>30</y>
+        <width>30</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tree_seg">
+     <attribute name="title">
+      <string>Segments</string>
+     </attribute>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Font size:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_sample_seg">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>515</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(221, 221, 221);
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Example text</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmb_font_name_seg">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>251</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 255, 255);
+background-color: rgb(0, 0, 66);</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_apply_seg">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>180</y>
+        <width>81</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:disabled { color: rgb(130, 130, 130);}
+QPushButton:hover {background-color: qlineargradient(spread:pad, x1:0, y1:0.00568182, x2:0.98, y2:0.982955, stop:0 rgb(38, 19, 255), stop:1 rgb(150, 207, 207));}
+
+</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Font name:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmb_font_size_seg">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>30</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 255, 255);
+background-color: rgb(0, 0, 66);</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="txt_code">
+     <attribute name="title">
+      <string>Code</string>
+     </attribute>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Font size:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_sample_code">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>515</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Example text</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmb_font_name_code">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>251</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 255, 255);
+background-color: rgb(0, 0, 66);</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_bg_color_code">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>30</y>
+        <width>111</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Background color</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Font name:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmb_font_size_code">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>30</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(170, 255, 255);
+background-color: rgb(0, 0, 66);</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="chk_autocomplete_show">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>150</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Show autocomplete</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="chk_autocomplete_select">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>150</y>
+        <width>371</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Automatically select the first item in the autocomplete menu</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_apply_code">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>180</y>
+        <width>81</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:disabled { color: rgb(130, 130, 130);}
+QPushButton:hover {background-color: qlineargradient(spread:pad, x1:0, y1:0.00568182, x2:0.98, y2:0.982955, stop:0 rgb(38, 19, 255), stop:1 rgb(150, 207, 207));}
+
+</string>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_color_sample_code">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>30</y>
+        <width>30</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="btn_apply_all">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>330</y>
+      <width>161</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton:disabled { color: rgb(130, 130, 130);}
+QPushButton:hover {background-color: qlineargradient(spread:pad, x1:0, y1:0.00568182, x2:0.98, y2:0.982955, stop:0 rgb(38, 19, 255), stop:1 rgb(150, 207, 207));}
+
+</string>
+    </property>
+    <property name="text">
+     <string>Apply and Close</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_cancel">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>330</y>
+      <width>81</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton:disabled { color: rgb(130, 130, 130);}
+QPushButton:hover {background-color: qlineargradient(spread:pad, x1:0, y1:0.00568182, x2:0.98, y2:0.982955, stop:0 rgb(38, 19, 255), stop:1 rgb(150, 207, 207));}
+
+</string>
+    </property>
+    <property name="text">
+     <string>Close</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>400</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Source Code Pro ExtraBold</family>
+      <pointsize>22</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(85, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>Settings</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
