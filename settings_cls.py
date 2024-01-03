@@ -49,6 +49,7 @@ class Settings(QDialog):
 
         self.btn_bg_color_result.clicked.connect(self.btn_bg_color_result_click)
         self.btn_bg_color_code.clicked.connect(self.btn_bg_color_code_click)
+        self.chk_show_image_result.stateChanged.connect(self.chk_show_image_result_changed)
 
         self.btn_cancel.clicked.connect(self.btn_cancel_click)
         
@@ -97,12 +98,17 @@ class Settings(QDialog):
         self.btn_apply_general.setDisabled(False)
         self._set_apply_all_state()
 
+    def chk_show_image_result_changed(self):
+        self.btn_apply_result.setDisabled(False)
+        self._set_apply_all_state()
+
     def apply_all(self):
         self.apply_general()
         self.apply_result()
         self.apply_code()
         self.apply_seg()
         self._set_apply_all_state()
+        self.close()
 
     def apply_general(self):
         self.user_settings["general"]["reload_source_on_open"] = self.chk_reload_source.isChecked()
@@ -114,6 +120,7 @@ class Settings(QDialog):
         self.user_settings["txt_result"]["font"]["name"] = self.cmb_font_name_result.currentText()
         self.user_settings["txt_result"]["font"]["size"] = int(self.cmb_font_size_result.currentText())
         self.user_settings["txt_result"]["bg_color"] = self.btn_bg_color_result.objectName()
+        self.user_settings["txt_result"]["show_image"] = self.chk_show_image_result.isChecked()
         self.btn_apply_result.setDisabled(True)
         self._set_apply_all_state()
         self.signal_update_widgets.emit()
@@ -164,6 +171,8 @@ class Settings(QDialog):
         if self.user_settings["txt_result"]["bg_color"] is not None:
             self.lbl_color_sample_result.setStyleSheet(f"background-color: {self.user_settings['txt_result']['bg_color']};")
             self.btn_bg_color_result.setObjectName(self.user_settings['txt_result']['bg_color'])
+        if self.user_settings["txt_result"]["show_image"] is not None:
+            self.chk_show_image_result.setChecked(self.user_settings["txt_result"]["show_image"])
             
         if self.user_settings["txt_code"]["font"]["name"] is not None:
             self.cmb_font_name_code.setCurrentText(self.user_settings["txt_code"]["font"]["name"])
@@ -216,6 +225,7 @@ class Settings(QDialog):
         self.btn_bg_color_result: QPushButton = self.findChild(QPushButton, "btn_bg_color_result")
         self.btn_apply_result: QPushButton = self.findChild(QPushButton, "btn_apply_result")
         self.lbl_color_sample_result: QLabel = self.findChild(QLabel, "lbl_color_sample_result")
+        self.chk_show_image_result: QCheckBox = self.findChild(QCheckBox, "chk_show_image_result")
 
         # Segment
         self.cmb_font_name_seg: QComboBox = self.findChild(QComboBox, "cmb_font_name_seg")

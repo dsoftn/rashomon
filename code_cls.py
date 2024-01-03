@@ -94,7 +94,6 @@ class Code():
         command: str = if_command_condition[0]
         argument: str = if_command_condition[1]
         if not matchcase:
-            command = command.lower()
             argument = argument.lower()
             text = text.lower()
 

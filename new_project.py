@@ -12,10 +12,11 @@ from PyQt5.QtMultimedia import QSound
 
 import urllib.request
 from urllib.parse import urlparse
+import requests
 
 
 class NewProject(QDialog):
-    def __init__(self, parent_widget: QMainWindow, result: dict, clipboard: QClipboard, *args, **kwargs):
+    def __init__(self, parent_widget: QMainWindow, result: dict, clipboard: QClipboard, window_type: str = "new", *args, **kwargs):
         super().__init__(parent_widget, *args, **kwargs)
 
         self._parent_widget = parent_widget
@@ -26,6 +27,10 @@ class NewProject(QDialog):
 
         self._setup_widgets()
         self._setup_apperance()
+
+        if window_type == "change":
+            self.setWindowTitle("Change Source")
+            self.lbl_title.setText("Change Source")
 
         # Connect events with slots
         self.btn_web.clicked.connect(self.btn_web_click)
@@ -108,9 +113,13 @@ class NewProject(QDialog):
             return
 
         try:
-            result = urllib.request.urlopen(url).read().decode("utf-8")
+            result_page = requests.get(url)
+            result_page.raise_for_status()
+            result = result_page.text
+            # result = urllib.request.urlopen(url).read().decode("utf-8")
         except Exception as e:
             self.lbl_info.setText(f"Error.  URL is not loaded.\n{e}")
+            self.lbl_info.setToolTip(f"Error.  URL is not loaded.\n{e}")
             return
         
         if not result:
@@ -120,6 +129,7 @@ class NewProject(QDialog):
         self.result["text"] = result
         self.result["source"] = url
         self.lbl_info.setText("URL Loaded.")
+        self.lbl_info.setToolTip("")
         self.btn_confirm.setVisible(True)
 
     def _setup_widgets(self):

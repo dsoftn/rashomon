@@ -162,7 +162,7 @@ class Segment():
                     pos += len(found_item)
                 else:
                     pos, found_item_start = self._find_first_pos(code_result["end"]["StartsWith"], txt, pos)
-                    pos_end, found_item_end = self._find_first_pos(code_result["end"]["EndsWith"], pos + len(found_item_start))
+                    pos_end, found_item_end = self._find_first_pos(code_result["end"]["EndsWith"], txt, pos + len(found_item_start))
                     if pos == -1 or pos_end == -1:
                         break
                     end_selection = [pos, pos_end + len(found_item_end), txt[pos:pos_end + len(found_item_end)]]

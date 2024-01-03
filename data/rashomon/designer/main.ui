@@ -26,7 +26,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>901</width>
+      <width>1101</width>
       <height>31</height>
      </rect>
     </property>
@@ -64,7 +64,7 @@
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>10</y>
+       <y>8</y>
        <width>781</width>
        <height>21</height>
       </rect>
@@ -90,6 +90,25 @@
      </property>
      <property name="textInteractionFlags">
       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_change_source">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>8</y>
+       <width>150</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {color: rgb(0, 85, 0);}
+QPushButton:disabled { color: rgb(130, 130, 130);}
+QPushButton:hover {color: rgb(255, 255, 0); background-color: qlineargradient(spread:pad, x1:0, y1:0.00568182, x2:0.98, y2:0.982955, stop:0 rgb(38, 19, 255), stop:1 rgb(150, 207, 207));}
+</string>
+     </property>
+     <property name="text">
+      <string>Change Source</string>
      </property>
     </widget>
    </widget>
@@ -178,7 +197,7 @@ background-color:  rgb(29, 29, 29);</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>14</pointsize>
+       <pointsize>13</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -212,7 +231,7 @@ color: rgb(255, 255, 127);</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>14</pointsize>
+       <pointsize>13</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -1150,9 +1169,9 @@ background-color: rgb(0, 85, 0);</string>
    <widget class="QFrame" name="frm_tree_seg_setup">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>10</x>
       <y>690</y>
-      <width>101</width>
+      <width>341</width>
       <height>40</height>
      </rect>
     </property>
@@ -1194,6 +1213,9 @@ background-color: rgb(0, 85, 0);</string>
        <height>30</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string/>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -1229,6 +1251,64 @@ background-color: rgb(0, 85, 0);</string>
        <width>25</width>
        <height>25</height>
       </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_seg_expand">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>5</y>
+       <width>30</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Expand all</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../images/expand.png</normaloff>../images/expand.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_seg_collapse">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>5</y>
+       <width>30</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Collapse all</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../images/collapse.png</normaloff>../images/collapse.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -1389,7 +1469,7 @@ background-color: rgb(29, 29, 29);</string>
       <rect>
        <x>180</x>
        <y>0</y>
-       <width>75</width>
+       <width>61</width>
        <height>25</height>
       </rect>
      </property>
@@ -1400,9 +1480,9 @@ background-color: rgb(29, 29, 29);</string>
     <widget class="QPushButton" name="btn_find_prev">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>245</x>
        <y>0</y>
-       <width>75</width>
+       <width>61</width>
        <height>25</height>
       </rect>
      </property>
@@ -1413,7 +1493,7 @@ background-color: rgb(29, 29, 29);</string>
     <widget class="QLabel" name="lbl_search_info">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>400</x>
        <y>0</y>
        <width>47</width>
        <height>30</height>
@@ -1424,6 +1504,36 @@ background-color: rgb(29, 29, 29);</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_find_go">
+     <property name="geometry">
+      <rect>
+       <x>315</x>
+       <y>0</y>
+       <width>31</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Go</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spin_find_go">
+     <property name="geometry">
+      <rect>
+       <x>345</x>
+       <y>0</y>
+       <width>45</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 0);
+background-color: rgb(0, 85, 0);</string>
+     </property>
+     <property name="maximum">
+      <number>1002</number>
      </property>
     </widget>
    </widget>

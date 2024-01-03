@@ -198,7 +198,6 @@ class AbstractCommand():
         
         conditions = []
         txt = f" {if_command[3:]} "
-        txt = txt.replace("=", " ")
         txt_con = ""
         container_content = ""
         command = ""
@@ -242,7 +241,7 @@ class AbstractCommand():
                     pos += 1
                     continue
 
-            if i == " ":
+            if i in " =":
                 if not command:
                     pos += 1
                     continue
@@ -261,7 +260,7 @@ class AbstractCommand():
                 continue
 
             command += i
-            command = command.strip()
+            command = command.strip(" =")
             pos += 1
 
         if in_container:

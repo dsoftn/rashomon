@@ -39,16 +39,42 @@ class Script():
         return top_segments
 
     def get_segment_children(self, segment_name: str, names_only: bool = False) -> list:
+        if names_only:
+            return self._children_names_for_parent(segment_name)
+        
         segments = self.get_all_segments()
         result = []
         for segment in segments:
             if segment.parent == segment_name:
                 result.append(segment)
-        if names_only:
-            return [x.name for x in result]
-        else:
-            return result
-    
+        return result
+
+    def _children_names_for_parent(self, parent_name: str) -> list:
+        code_list = self.data_source["code"].split("\n")
+        result = []
+        in_segment = False
+        segment_name = ""
+        seg_parent = ""
+        for line in code_list:
+            if line.lstrip().startswith("BeginSegment"):
+                seg_parent = ""
+                segment_name = ""
+                segment_name = self.code.get_command_value(line)
+                in_segment = True
+            
+            if line.lstrip().startswith("Parent") and in_segment:
+                seg_parent = self.code.get_command_value(line)
+            
+            if line.lstrip().startswith("EndSegment") and in_segment:
+                if segment_name and seg_parent:
+                    if seg_parent == parent_name:
+                        result.append(segment_name)
+                seg_parent = ""
+                segment_name = ""
+                in_segment = False
+
+        return result
+
     def update_block_in_segment(self, segment_name: str, new_block: str, replace_in_all_siblings: bool = False, feedback_function = None) -> str:
         original_segment = Segment(self._get_segment_script(segment_name=segment_name))
 
@@ -304,21 +330,21 @@ EndSegment
         code_list = self.data_source["code"].split("\n")
         result = []
         segment_script = ""
-        segment_names = []
+        segment_name = ""
         for line in code_list:
             segment_script += line + "\n"
             if line.lstrip().startswith("BeginSegment"):
                 segment_name = self.code.get_command_value(line)
-                segment_names.append(segment_name)
                 segment_script = line + "\n"
             if line.lstrip().startswith("EndSegment"):
                 if segment_name:
-                    result.append(Segment(segment_script))
+                    if names_only:
+                        result.append(segment_name)
+                    else:
+                        result.append(Segment(segment_script))
                     segment_name = ""
-        if names_only:
-            return segment_names
-        else:
-            return result
+
+        return result
 
     def get_segments_map_name_parent(self, siblings_for: str = None) -> list:
         if siblings_for:
@@ -355,10 +381,10 @@ EndSegment
 
         new_code = ""
         for i in replace_with_list:
-            if not i.lstrip().startswith(("BeginSegment", "Parent", "Index")):
+            if not i.lstrip().startswith(("BeginSegment", "Parent", "Index", "EndSegment")):
                 new_code += i + "\n"
         
-        result = old_code + new_code
+        result = old_code + new_code + "EndSegment"
 
         return result
 

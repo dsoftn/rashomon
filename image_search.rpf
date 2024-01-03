@@ -1,0 +1,11 @@
+{
+  "project": null,
+  "selected": "web",
+  "type": "html",
+  "source": "https://images.search.yahoo.com/search/images;?p=slobodan+milosevic",
+  "text": "",
+  "formated_text": "",
+  "code": "# Rashomon Code\n\nBeginSegment (images)\n    Parent = None\n    Index = 0\n\nEndSegment\n\n",
+  "project_filename": "D:/Programiranje/Python/Projekti/rashomon/image_search_project.rpf",
+  "saved": true
+}

@@ -38,10 +38,18 @@ class Rashomon():
         return txt
 
     def get_segment_siblings(self, segment_name: str) -> list:
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
+            return None
+
         result = self.script.get_segments_map_name_parent(siblings_for=segment_name)
         return result
 
     def sort_segments(self, segments: list) -> list:
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
+            return None
+
         all_segments = self.script.get_all_segments(names_only=True)
         seg_data = []
         for segment in segments:
@@ -54,6 +62,10 @@ class Rashomon():
         return [x[0] for x in seg_data]
 
     def recreate_segment_tree(self) -> bool:
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
+            return None
+
         code_tree = []
         for i in self.script.get_top_segment_names():
             descendants_list = []
@@ -128,15 +140,27 @@ EndSegment
         return result
 
     def is_segment(self, segment_name: str) -> bool:
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
+            return None
+
         if segment_name in self.script.get_all_segments(names_only=True):
             return True
         else:
             return False
 
     def get_all_segments(self) -> list:
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
+            return None
+
         return self.script.get_all_segments(names_only=True)
 
     def get_segment_children(self, segment_name: str = None) -> list:
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
+            return None
+
         if segment_name is None:
             result = self.script.get_top_segment_names()
         else:
@@ -213,9 +237,17 @@ EndSegment
         self.script.load_data_source(self._data_source)
     
     def get_source(self) -> str:
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
+            return None
+
         return self._data_source["source"]
     
     def get_source_text(self) -> str:
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
+            return None
+
         if self._compatible_mode:
             if self._data_source["formated_text"]:
                 return self._data_source["formated_text"]
@@ -226,6 +258,11 @@ EndSegment
         
     def set_compatible_mode(self, value: bool):
         if not isinstance(value, bool):
+            self.errors(error_message="Set Compatible Mode: Value must be boolean True/False")
+            return None
+        
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
             return None
         
         self._compatible_mode = value
@@ -252,6 +289,9 @@ EndSegment
         return self._error_messages
 
     def download_text_from_source(self) -> bool:
+        if self._data_source is None:
+            self.errors(error_message="No project loaded.")
+            return None
         txt = ""
         if self._data_source["selected"] == "file":
             txt = self._retrive_text_from_file(self._data_source["source"])
